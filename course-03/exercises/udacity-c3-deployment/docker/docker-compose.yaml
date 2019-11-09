@@ -1,0 +1,43 @@
+version: "3"
+services:
+  reverseproxy:
+      image: kaeyan/reverseproxy
+      ports:
+          - 8080:8080
+      restart: always
+      depends_on:
+        - backend-user
+        - backend-feed     
+  backend-user:
+    image: kaeyan/udacity-restapi-user
+    volumes:
+      - $HOME/.aws:/root/.aws
+    environment:
+      UDAGRAM_USERNAME: $UDAGRAM_USERNAME
+      UDAGRAM_PASSWORD: $UDAGRAM_PASSWORD
+      UDAGRAM_DB: $UDAGRAM_DB
+      UDAGRAM_HOST: $UDAGRAM_HOST
+      UDAGRAM_DIALECT: $UDAGRAM_DIALECT
+      UDAGRAM_REGION: $UDAGRAM_REGION
+      UDAGRAM_PROFILE: $UDAGRAM_PROFILE
+      UDAGRAM_AWS_MEDIA_BUCKET: $UDAGRAM_AWS_MEDIA_BUCKET
+      URL: "http://localhost:8100"
+  backend-feed:
+    image: kaeyan/udacity-restapi-feed
+    volumes:
+      - $HOME/.aws:/root/.aws
+    environment:
+      UDAGRAM_USERNAME: $UDAGRAM_USERNAME
+      UDAGRAM_PASSWORD: $UDAGRAM_PASSWORD
+      UDAGRAM_DB: $UDAGRAM_DB
+      UDAGRAM_HOST: $UDAGRAM_HOST
+      UDAGRAM_DIALECT: $UDAGRAM_DIALECT
+      UDAGRAM_REGION: $UDAGRAM_REGION
+      UDAGRAM_PROFILE: $UDAGRAM_PROFILE
+      UDAGRAM_AWS_MEDIA_BUCKET: $UDAGRAM_AWS_MEDIA_BUCKET
+      URL: "http://localhost:8100"
+  frontend:
+    # image: scheele/udacity-frontend:local
+    image: kaeyan/udacity-frontend
+    ports:
+      - "8100:80"

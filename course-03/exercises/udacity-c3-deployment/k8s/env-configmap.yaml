@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  UDAGRAM_DB: udagramtestdb
+  UDAGRAM_HOST: udagramtestdb.cwmgagrjjtmd.ap-southeast-1.rds.amazonaws.com
+  UDAGRAM_DIALECT: postgres
+  UDAGRAM_REGION: ap-southeast-1
+  UDAGRAM_PROFILE: default
+  UDAGRAM_AWS_MEDIA_BUCKET: udagramtests3
+  URL: http://localhost:8100  
+metadata:
+  name: env-config
