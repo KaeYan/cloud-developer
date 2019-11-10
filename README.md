@@ -16,27 +16,21 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-o
 
 ### Docker build individual microservice applications
 
-$ cd <path/to/udacity-c3-restapi-user>
-$ docker build -t <YourDockerHubName>/udacity-restapi-user .
+$ cd <path/to/udacity-c3-restapi-user>  $ docker build -t <YourDockerHubName>/udacity-restapi-user .
 
-$ cd <path/to/udacity-c3-restapi-feed>
-$ docker build -t <YourDockerHubName>/udacity-restapi-feed .
+$ cd <path/to/udacity-c3-restapi-feed>  $ docker build -t <YourDockerHubName>/udacity-restapi-feed .
 
-$ cd <path/to/udacity-c3-frontend>
-$ docker build -t <YourDockerHubName>/udacity-frontend .
+$ cd <path/to/udacity-c3-frontend>  $ docker build -t <YourDockerHubName>/udacity-frontend .
 
-$ cd <path/to/udacity-c3-deployment/docker>
-$ docker build -t <YourDockerHubName>/reverseproxy .
+$ cd <path/to/udacity-c3-deployment/docker>  $ docker build -t <YourDockerHubName>/reverseproxy .
 
 ### Run individual microservice applications (Example running udacity-restapi-feed)
 
-In this step, all the environment variables need to be setup.
-$ docker run --rm --publish 8080:8080 -v $HOME/.aws:/root/.aws --env UDAGRAM_USERNAME=$UDAGRAM_USERNAME --env UDAGRAM_PASSWORD=$UDAGRAM_PASSWORD --env UDAGRAM_DB=$UDAGRAM_DB --env UDAGRAM_HOST=$UDAGRAM_HOST --env UDAGRAM_DIALECT=$UDAGRAM_DIALECT --env UDAGRAM_REGION=$UDAGRAM_REGION --env UDAGRAM_PROFILE=$UDAGRAM_PROFILE --env UDAGRAM_AWS_MEDIA_BUCKET=$UDAGRAM_AWS_MEDIA_BUCKET --name feed <YourDockerHubName>/udacity-restapi-feed
+In this step, all the environment variables need to be setup.  $ docker run --rm --publish 8080:8080 -v $HOME/.aws:/root/.aws --env UDAGRAM_USERNAME=$UDAGRAM_USERNAME --env UDAGRAM_PASSWORD=$UDAGRAM_PASSWORD --env UDAGRAM_DB=$UDAGRAM_DB --env UDAGRAM_HOST=$UDAGRAM_HOST --env UDAGRAM_DIALECT=$UDAGRAM_DIALECT --env UDAGRAM_REGION=$UDAGRAM_REGION --env UDAGRAM_PROFILE=$UDAGRAM_PROFILE --env UDAGRAM_AWS_MEDIA_BUCKET=$UDAGRAM_AWS_MEDIA_BUCKET --name feed <YourDockerHubName>/udacity-restapi-feed
 
 ### Docker compose to run all microservices
 
-$ cd <path/to/udacity-c3-deployment/docker>
-$ docker-compose up
+$ cd <path/to/udacity-c3-deployment/docker>  $ docker-compose up
 
 
 
